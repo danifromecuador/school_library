@@ -12,6 +12,3 @@ class Student < Person
     '¯(ツ)/¯'
   end
 end
-
-student = Student.new(20, 'B', 'John', false)
-p [student.id, student.name, student.age, student.classroom, student.can_use_services?, student.play_hooky]
