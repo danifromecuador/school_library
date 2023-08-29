@@ -1,4 +1,5 @@
 class Person
+  # This class will not work unless change : for = in parent_permission, but doing that a linter error will appear
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = rand(1000)
     @name = name
