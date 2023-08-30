@@ -16,6 +16,10 @@ class Person
     of_age? || @permission
   end
 
+  def correct_name
+    name
+  end
+  
   private
 
   def of_age?
