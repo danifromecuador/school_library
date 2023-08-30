@@ -6,9 +6,8 @@ class CapitalizeDecorator
     @person = person
   end
   attr_accessor :person
+
   def correct_name
     person.correct_name.capitalize
   end
 end
-
-
