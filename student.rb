@@ -19,13 +19,3 @@ class Student < Person
   end
 end
 
-student1 = Student.new(10, 'John')
-student2 = Student.new(12, 'Jane')
-class1 = Classroom.new('B')
-class2 = Classroom.new('A')
-
-class1.add_student(student1)
-class1.add_student(student2)
-
-p student1.classroom.label # => "B"
-p student2.classroom.label # => "B"
