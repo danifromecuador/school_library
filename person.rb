@@ -5,8 +5,8 @@ require_relative 'rental'
 require_relative 'book'
 
 class Person
-  attr_reader :id, :rentals
-  attr_accessor :name, :age
+  attr_reader :id
+  attr_accessor :name, :age, :rentals
 
   def initialize(age, name = 'Unknown', permission: true)
     @id = rand(1000)
