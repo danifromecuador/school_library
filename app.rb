@@ -1,5 +1,6 @@
 require_relative 'student'
 require_relative 'teacher'
+require_relative 'book'
 
 def list_all_people
   Student.all.each do |student|
@@ -40,5 +41,14 @@ def create_a_person
     p t1
     p "Person created sucessfully!"
   end
+end
+
+def create_a_book
+  print "Title: "
+  title = gets.chomp
+  print "Author: "
+  author = gets.chomp
+  Book.new(title, author)
+  p "Book created sucessfully!"
 end
 

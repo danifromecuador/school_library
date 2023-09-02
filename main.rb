@@ -28,6 +28,7 @@ def main
     when 3
       create_a_person
     when 4
+      create_a_book
     when 5
     when 6
     when 7
