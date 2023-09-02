@@ -1,3 +1,3 @@
-def greets
-  p "Hello World"
+def greets(number)
+  p number + 1
 end
