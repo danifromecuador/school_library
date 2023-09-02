@@ -14,26 +14,24 @@ def options_menu
   puts "\n"
 end
 
-def handle_menu_choice(choice, app)
+def handle_menu_choice(choice)
   case choice
   when 1
-    app.list_all_books
+    list_all_books
   when 2
-    app.list_all_people
+    list_all_people
   when 3
-    app.create_person
+    create_person
   when 4
-    app.create_a_book
+    create_a_book
   when 5
-    app.create_a_rental
+    create_a_rental
   when 6
-    app.rental_person_id
+    rental_person_id
   end
 end
 
 def main
-  app = App.new
-
   puts "\n"
   puts 'Welcome to the School Library App!!'
   puts "\n"
@@ -43,7 +41,7 @@ def main
     choice = gets.chomp.to_i
     break if choice == 7
 
-    handle_menu_choice(choice, app)
+    handle_menu_choice(choice)
   end
 end
 
