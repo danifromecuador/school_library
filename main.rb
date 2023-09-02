@@ -20,9 +20,9 @@ def main
   puts menu_text
   user_input = gets.chomp.to_i
 
-
-
-
+  if (user_input == 3)
+    create_a_person
+  end
 end
 
 main()
