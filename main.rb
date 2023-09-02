@@ -24,6 +24,7 @@ def main
     case user_input
     when 1
     when 2
+      list_all_people
     when 3
       create_a_person
     when 4

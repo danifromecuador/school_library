@@ -1,6 +1,12 @@
 require_relative 'student'
 require_relative 'teacher'
 
+def list_all_people
+  Student.all.each do |student|
+    p "[Sudent] Name: #{student.name}, ID: #{student.id}, Age: #{student.age}"
+  end
+end
+
 def create_a_person
   p "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
   user_input = gets.chomp.to_i
@@ -21,3 +27,4 @@ def create_a_person
     p "Person created sucessfully!"
   end
 end
+
