@@ -25,6 +25,7 @@ def main
     when 1
     when 2
     when 3
+      create_a_person
     when 4
     when 5
     when 6
