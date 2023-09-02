@@ -8,7 +8,7 @@ class Person
   attr_reader :id
   attr_accessor :name, :age, :rentals
 
-  def initialize(age, name = 'Unknown', permission: true)
+  def initialize(age, permission, name = 'Unknown')
     @id = rand(1000)
     @name = name
     @age = age
