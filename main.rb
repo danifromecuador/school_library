@@ -19,9 +19,10 @@ def main
 
   puts menu_text
   user_input = gets.chomp.to_i
-  if (user_input == 1)
-    greets(user_input)
-  end
+
+
+
+
 end
 
 main()
