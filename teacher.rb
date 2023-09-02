@@ -1,14 +1,19 @@
 require_relative 'person'
 
 class Teacher < Person
-  def initialize(age, specialization, name = 'Unknown', permission: true)
+  attr_accessor :specialization
+  @@all_teachers = []
+  def initialize(age, specialization, name = 'Unknown', permission = true)
     super(age, name, permission: permission)
     @specialization = specialization
+    @@all_teachers << self
   end
-
-  attr_accessor :specialization
 
   def can_use_services?
     true
+  end
+
+  def self.all
+    @@all_teachers
   end
 end

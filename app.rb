@@ -5,6 +5,9 @@ def list_all_people
   Student.all.each do |student|
     p "[Sudent] Name: #{student.name}, ID: #{student.id}, Age: #{student.age}"
   end
+  Teacher.all.each do |teacher|
+    p "[Teacher] Name: #{teacher.name}, ID: #{teacher.id}, Age: #{teacher.age}"
+  end
 end
 
 def create_a_person
@@ -24,6 +27,17 @@ def create_a_person
     end
     classroom = "unknown"
     Student.new(age, name, classroom, permission)
+    p "Person created sucessfully!"
+
+  elsif (user_input == 2)
+    print "Age: "
+    age = gets.chomp.to_i
+    print "Name: "
+    name = gets.chomp
+    print "Specialization: "
+    specialization = gets.chomp
+    t1 = Teacher.new(age, specialization, name, true)
+    p t1
     p "Person created sucessfully!"
   end
 end
