@@ -17,8 +17,7 @@ def create_a_person
       permission = false
     end
     classroom = "unknown"
-    name = Student.new(age, name, classroom, permission)
-    p "You have created a student sucessfully!"
+    Student.new(age, name, classroom, permission)
+    p "Person created sucessfully!"
   end
-  p name
 end
