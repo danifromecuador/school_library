@@ -19,67 +19,58 @@ def list_all_people
 end
 
 def create_a_person
-  p "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
+  puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
   user_input = gets.chomp.to_i
-  if (user_input == 1)
-    print "Age: "
-    age = gets.chomp.to_i
-    print "Name: "
-    name = gets.chomp
-    print "Has parent permission? (y/n): "
-    has_permission = gets.chomp
-    if (has_permission == "y")
-      permission = true
-    else
-      permission = false
-    end
-    classroom = "unknown"
-    Student.new(age, name, classroom, permission)
-    p "Person created sucessfully!"
+  return unless [1, 2].include?(user_input)
 
-  elsif (user_input == 2)
-    print "Age: "
-    age = gets.chomp.to_i
-    print "Name: "
-    name = gets.chomp
-    print "Specialization: "
+  print 'Age: '
+  age = gets.chomp.to_i
+  print 'Name: '
+  name = gets.chomp
+  if user_input == 1
+    print 'Has parent permission? (y/n): '
+    has_permission = gets.chomp
+    permission = has_permission
+    classroom = 'unknown'
+    Student.new(age, name, classroom, permission)
+  elsif user_input == 2
+    print 'Specialization: '
     specialization = gets.chomp
-    t1 = Teacher.new(age, specialization, name, true)
-    p "Person created sucessfully!"
+    Teacher.new(age, specialization, name, true)
   end
+  puts 'Person created successfully!'
 end
 
 def create_a_book
-  print "Title: "
+  print 'Title: '
   title = gets.chomp
-  print "Author: "
+  print 'Author: '
   author = gets.chomp
   Book.new(title, author)
-  p "Book created sucessfully!"
+  p 'Book created sucessfully!'
 end
 
+@all_people = Student.all + Teacher.all
+
 def create_a_rental
-  p 'Select a book from the following list by number'
+  puts 'Select a book from the following list by number'
   Book.all.each_with_index do |book, index|
     puts "#{index}) Title: #{book.title}, Author: #{book.author}"
   end
   book_index = gets.chomp.to_i
-  p 'Select a person from the following list by number (not id)'
-  Student.all.each_with_index do |student, index|
-    puts "#{index}) Name: #{student.name}, ID: #{student.id}, Age: #{student.age}"
-  end
-  index_continuation = Student.all.length
-  Teacher.all.each_with_index do |teacher, index|
-    puts "#{index + index_continuation}) Name: #{teacher.name}, ID: #{teacher.id}, Age: #{teacher.age}"
+  puts 'Select a person from the following list by number (not id)'
+  @all_people.each_with_index do |person, index|
+    puts "#{index}) Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
   end
   person_index = gets.chomp.to_i
-  print "Date: "
+  print 'Date: '
   date = gets.chomp
-  if (Student.all[person_index].class == Student)
-    Rental.new(date, Student.all[person_index], Book.all[book_index])
-    p "Rental created sucessfully!"
-  elsif (Teacher.all[person_index].class == Teacher)
-    Rental.new(date, Teacher.all[person_index], Book.all[book_index])
-    p "Rental created sucessfully!"
-  end  
+  selected_person = @all_people[person_index]
+  selected_book = Book.all[book_index]
+  if selected_person && selected_book
+    Rental.new(date, selected_person, selected_book)
+    puts 'Rental created successfully!'
+  else
+    puts 'Invalid selection. Rental not created.'
+  end
 end

@@ -27,7 +27,6 @@ class Person
 
   def add_rental(rental)
     @rentals.push(rental) unless @rentals.include?(rental)
-
   end
 
   private
