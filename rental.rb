@@ -9,8 +9,3 @@ class Rental
     book.add_rental(self)
   end
 end
-
-book1 = Book.new('The Hobbit', 'J.R.R. Tolkien')
-p book1
-
-Rental.new('2019-01-01')
