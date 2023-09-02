@@ -2,6 +2,12 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
 
+def list_all_books
+  Book.all.each do |book|
+    p "[Book] Title: #{book.title}, Author: #{book.author}"
+  end
+end
+
 def list_all_people
   Student.all.each do |student|
     p "[Sudent] Name: #{student.name}, ID: #{student.id}, Age: #{student.age}"

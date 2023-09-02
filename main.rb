@@ -22,16 +22,17 @@ def main
     user_input = gets.chomp.to_i
 
     case user_input
-    when 1
-    when 2
+    when 1 # List all books
+      list_all_books
+    when 2 # List all people
       list_all_people
     when 3
       create_a_person
     when 4
       create_a_book
-    when 5
-    when 6
-    when 7
+    when 5 # Create a rental
+    when 6 # List all rentals for a given person id
+    when 7 # Exit
       p "Thank you for using School Library App!"
       break
     else
