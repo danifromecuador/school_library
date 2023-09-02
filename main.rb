@@ -2,26 +2,38 @@
 require_relative 'app'
 
 def main
-  menu_text = <<~MENU
+  p "Welcome to School Library App!"
+  p
+  loop do
+    menu_text = <<~MENU
 
-    Welcome to School Library App!
+      Please select an option by entering a number:
+      1. List all books
+      2. List all people
+      3. Create a person
+      4. Create a book
+      5. Create a rental
+      6. List all rentals for a given person id
+      7. Exit
 
-    Please select an option by entering a number:
-    1. List all books
-    2. List all people
-    3. Create a person
-    4. Create a book
-    5. Create a rental
-    6. List all rentals for a given person id
-    7. Exit
+    MENU
 
-  MENU
+    puts menu_text
+    user_input = gets.chomp.to_i
 
-  puts menu_text
-  user_input = gets.chomp.to_i
-
-  if (user_input == 3)
-    create_a_person
+    case user_input
+    when 1
+    when 2
+    when 3
+    when 4
+    when 5
+    when 6
+    when 7
+      p "Thank you for using School Library App!"
+      break
+    else
+      puts "Invalid option. Please select a valid option (1-7)."
+    end
   end
 end
 
