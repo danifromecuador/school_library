@@ -31,6 +31,7 @@ def main
     when 4
       create_a_book
     when 5 # Create a rental
+      create_a_rental
     when 6 # List all rentals for a given person id
     when 7 # Exit
       p "Thank you for using School Library App!"

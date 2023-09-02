@@ -1,6 +1,7 @@
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
+require_relative 'rental'
 
 def list_all_books
   Book.all.each do |book|
@@ -44,7 +45,6 @@ def create_a_person
     print "Specialization: "
     specialization = gets.chomp
     t1 = Teacher.new(age, specialization, name, true)
-    p t1
     p "Person created sucessfully!"
   end
 end
@@ -58,3 +58,28 @@ def create_a_book
   p "Book created sucessfully!"
 end
 
+def create_a_rental
+  p 'Select a book from the following list by number'
+  Book.all.each_with_index do |book, index|
+    puts "#{index}) Title: #{book.title}, Author: #{book.author}"
+  end
+  book_index = gets.chomp.to_i
+  p 'Select a person from the following list by number (not id)'
+  Student.all.each_with_index do |student, index|
+    puts "#{index}) Name: #{student.name}, ID: #{student.id}, Age: #{student.age}"
+  end
+  index_continuation = Student.all.length
+  Teacher.all.each_with_index do |teacher, index|
+    puts "#{index + index_continuation}) Name: #{teacher.name}, ID: #{teacher.id}, Age: #{teacher.age}"
+  end
+  person_index = gets.chomp.to_i
+  print "Date: "
+  date = gets.chomp
+  if (Student.all[person_index].class == Student)
+    Rental.new(date, Student.all[person_index], Book.all[book_index])
+    p "Rental created sucessfully!"
+  elsif (Teacher.all[person_index].class == Teacher)
+    Rental.new(date, Teacher.all[person_index], Book.all[book_index])
+    p "Rental created sucessfully!"
+  end  
+end

@@ -25,9 +25,9 @@ class Person
     name
   end
 
-  def add_rental(book, date)
-    rental = Rental.new(date, self, book)
+  def add_rental(rental)
     @rentals.push(rental) unless @rentals.include?(rental)
+
   end
 
   private
