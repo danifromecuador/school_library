@@ -76,6 +76,7 @@ def create_a_rental
   selected_person = all_people[person_index]
   selected_book = Book.all[book_index]
   return unless selected_person && selected_book
+
   Rental.new(date, selected_person, selected_book)
   puts 'Rental created successfully!'
 end
