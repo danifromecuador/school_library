@@ -2,18 +2,22 @@ require_relative 'person'
 require_relative 'classroom'
 
 class Student < Person
-  attr_reader :classroom
+  attr_reader :classroom, :permission, :id
 
   @all_students = []
-  def initialize(age, name, classroom = 'unknown', permission: true)
-    super(age, name, permission: permission)
+  def initialize(name, age, permission, classroom = 'unknown')
+    super(name, age, permission)
     @classroom = classroom
-    @all_students << self
+    self.class.all_students.push(self)
   end
 
   def classroom=(classroom)
     @classroom = classroom
     classroom.push(self) unless classroom.students.include?(self)
+  end
+
+  class << self
+    attr_reader :all_students
   end
 
   def self.all
