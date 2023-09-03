@@ -9,7 +9,7 @@ def list_all_books
   end
 end
 
-def all_people_list 
+def all_people_list
   people = []
   people.concat(Student.all)
   people.concat(Teacher.all)
@@ -75,12 +75,9 @@ def create_a_rental
   date = gets.chomp
   selected_person = all_people[person_index]
   selected_book = Book.all[book_index]
-  if selected_person && selected_book
-    Rental.new(date, selected_person, selected_book)
-    puts 'Rental created successfully!'
-  else
-    puts 'Invalid selection. Rental not created.'
-  end
+  return unless selected_person && selected_book
+  Rental.new(date, selected_person, selected_book)
+  puts 'Rental created successfully!'
 end
 
 def rental_person_id
