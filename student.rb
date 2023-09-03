@@ -2,7 +2,7 @@ require_relative 'person'
 require_relative 'classroom'
 
 class Student < Person
-  attr_reader :classroom, :permission, :id
+  attr_reader :classroom, :permission, :id, :name, :age
 
   @all_students = []
   def initialize(name, age, permission, classroom = 'unknown')
