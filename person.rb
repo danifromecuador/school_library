@@ -8,7 +8,7 @@ class Person
   attr_reader :id
   attr_accessor :name, :age, :rentals
 
-  def initialize(age, name = 'Unknown', permission: true)
+  def initialize(age, name, permission)
     @id = rand(1000)
     @name = name
     @age = age
@@ -25,8 +25,7 @@ class Person
     name
   end
 
-  def add_rental(book, date)
-    rental = Rental.new(date, self, book)
+  def add_rental(rental)
     @rentals.push(rental) unless @rentals.include?(rental)
   end
 

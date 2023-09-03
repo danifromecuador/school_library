@@ -1,16 +1,21 @@
 class Rental
-  attr_accessor :date, :person, :book
+  attr_accessor :date, :person, :book, :rentals
 
+  @all_rentals = []
   def initialize(date, person, book)
     @date = date
     @person = person
     person.add_rental(self)
     @book = book
     book.add_rental(self)
+    self.class.all_rentals.push(self)
+  end
+
+  class << self
+    attr_reader :all_rentals
+  end
+
+  def self.all
+    @all_rentals
   end
 end
-
-book1 = Book.new('The Hobbit', 'J.R.R. Tolkien')
-p book1
-
-Rental.new('2019-01-01')

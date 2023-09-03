@@ -80,8 +80,9 @@ Clone this repository to your desired folder:
 To run the project, execute the following command:
 
 ```sh
-  ruby school_library
+  ./main.rb 
 ```
+And start following the indications on the screen
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
