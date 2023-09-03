@@ -88,7 +88,7 @@ def rental_person_id
   if person
     puts 'Rentals: '
     person.rentals.each do |rental|
-      puts "Date: #{rental.date}, Book: #{rental.book.title}"
+      puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
     end
   else
     puts 'Person not found'
