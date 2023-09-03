@@ -9,12 +9,21 @@ def list_all_books
   end
 end
 
+def all_people_list 
+  people = []
+  people.concat(Student.all)
+  people.concat(Teacher.all)
+  people
+end
+
 def list_all_people
-  Student.all.each do |student|
-    p "[Sudent] Name: #{student.name}, ID: #{student.id}, Age: #{student.age}"
-  end
-  Teacher.all.each do |teacher|
-    p "[Teacher] Name: #{teacher.name}, ID: #{teacher.id}, Age: #{teacher.age}"
+  all_people = all_people_list
+  all_people.each do |person|
+    if person.instance_of?(Student)
+      p "[Student] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    else
+      p "[Teacher] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
   end
 end
 
@@ -30,13 +39,13 @@ def create_a_person
   if user_input == 1
     print 'Has parent permission? (y/n): '
     has_permission = gets.chomp
-    permission = has_permission
+    permission = has_permission == 'y'
     classroom = 'unknown'
     Student.new(age, name, classroom, permission)
   elsif user_input == 2
     print 'Specialization: '
     specialization = gets.chomp
-    Teacher.new(age, specialization, name, true)
+    Teacher.new(age, specialization, true, name)
   end
   puts 'Person created successfully!'
 end
@@ -50,27 +59,41 @@ def create_a_book
   p 'Book created sucessfully!'
 end
 
-@all_people = Student.all + Teacher.all
-
 def create_a_rental
+  all_people = all_people_list
   puts 'Select a book from the following list by number'
   Book.all.each_with_index do |book, index|
     puts "#{index}) Title: #{book.title}, Author: #{book.author}"
   end
   book_index = gets.chomp.to_i
   puts 'Select a person from the following list by number (not id)'
-  @all_people.each_with_index do |person, index|
+  all_people.each_with_index do |person, index|
     puts "#{index}) Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
   end
   person_index = gets.chomp.to_i
   print 'Date: '
   date = gets.chomp
-  selected_person = @all_people[person_index]
+  selected_person = all_people[person_index]
   selected_book = Book.all[book_index]
   if selected_person && selected_book
     Rental.new(date, selected_person, selected_book)
     puts 'Rental created successfully!'
   else
     puts 'Invalid selection. Rental not created.'
+  end
+end
+
+def rental_person_id
+  all_people = all_people_list
+  puts 'ID of person: '
+  person_id = gets.chomp.to_i
+  person = all_people.find { |p| p.id == person_id }
+  if person
+    puts 'Rentals: '
+    person.rentals.each do |rental|
+      puts "Date: #{rental.date}, Book: #{rental.book.title}"
+    end
+  else
+    puts 'Person not found'
   end
 end

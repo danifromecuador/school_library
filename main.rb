@@ -21,7 +21,7 @@ def handle_menu_choice(choice)
   when 2
     list_all_people
   when 3
-    create_person
+    create_a_person
   when 4
     create_a_book
   when 5
