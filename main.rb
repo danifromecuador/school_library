@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require_relative 'app'
 
-#This method just stores a list of options for the user to choose from
+# This method just stores a list of options for the user to choose from
 def options_menu
   puts 'Please choose your menu option!'
   puts "\n"
