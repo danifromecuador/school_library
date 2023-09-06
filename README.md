@@ -92,9 +92,11 @@ And start following the indications on the screen
 👤 **Dani Morillo**
 
 - GitHub: [danifromecuador](https://github.com/danifromecuador)
-- Twitter: [@danifromecuador](https://twitter.com/danifromecuador)
 - LinkedIn: [danifromecuador](https://www.linkedin.com/in/danifromecuador)
 
+👤 **Pablo Bonasera**
+- GitHub: [@PabloBona](https://github.com/PabloBona)
+- LinkedIn: [@PabloBona](https://www.linkedin.com/in/pablo-bonasera/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
